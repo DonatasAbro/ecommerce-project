@@ -14,7 +14,7 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>E-Shop</h1>
         <h2>Available Items:</h2>
-        <form action="/api/form" method="post">
+        <form action="/api/checkout" method="post">
           <div>
             <label>
               <input type="checkbox" name="item1" />
