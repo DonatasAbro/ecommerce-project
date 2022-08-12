@@ -18,7 +18,7 @@
 # misc
 .DS_Store
 *.pem
-project specifications.txt
+screenshots
 
 # debug
 npm-debug.log*

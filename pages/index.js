@@ -1,8 +1,40 @@
 import Head from "next/head";
-import Image from "next/image";
+import { useState } from "react";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
+  const [selectedItems, setSelectedItems] = useState([]);
+
+  const isItemSelected = (itemId) => selectedItems.includes(itemId);
+  const selectItem = (itemId) => {
+    return [...selectedItems, itemId];
+  };
+  const deselectItem = (itemId) => {
+    return selectedItems.filter((x) => x !== itemId);
+  };
+  const handleChange = (itemId) => (event) => {
+    if (isItemSelected(itemId)) {
+      setSelectedItems(deselectItem(itemId));
+      return;
+    }
+
+    setSelectedItems(selectItem(itemId));
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(selectedItems),
+    };
+    fetch("/api/checkout", requestOptions)
+      .then((response) => response.json())
+      .then((res) => console.log(res));
+
+    console.log(selectedItems);
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -14,34 +46,59 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>E-Shop</h1>
         <h2>Available Items:</h2>
-        <form action="/api/checkout" method="post">
+        <form onSubmit={handleSubmit}>
           <div>
             <label>
-              <input type="checkbox" name="item1" />
+              <input
+                type="checkbox"
+                name="item1"
+                checked={isItemSelected("item1")}
+                onChange={handleChange("item1")}
+              />
               Item 1
             </label>
           </div>
           <div>
             <label>
-              <input type="checkbox" name="item2" />
+              <input
+                type="checkbox"
+                name="item2"
+                checked={isItemSelected("item2")}
+                onChange={handleChange("item2")}
+              />
               Item 2
             </label>
           </div>
           <div>
             <label>
-              <input type="checkbox" name="item3" />
+              <input
+                type="checkbox"
+                name="item3"
+                checked={isItemSelected("item3")}
+                onChange={handleChange("item3")}
+              />
               Item 3
             </label>
           </div>
           <div>
             <label>
-              <input type="checkbox" name="item4" />
+              <input
+                type="checkbox"
+                name="item4"
+                checked={isItemSelected("item4")}
+                onChange={handleChange("item4")}
+              />
               Item 4
             </label>
           </div>
           <div>
             <label>
-              <input type="checkbox" name="item5" />
+              <input
+                type="checkbox"
+                name="item5"
+                checked={isItemSelected("item5")}
+                onChange={handleChange("item5")}
+              />
               Item 5
             </label>
           </div>
