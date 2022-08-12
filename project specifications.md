@@ -7,3 +7,10 @@ v0.1
 v0.1a
 
 - use useState on every item
+
+v0.2a
+
+- get items from backend (http get)
+- refactor stuff
+- for every item, render checkbox
+- render fetched items from server

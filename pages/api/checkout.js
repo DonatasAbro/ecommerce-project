@@ -1,7 +1,7 @@
 export default function handler(req, res) {
   const cartItems = req.body;
 
-  res.status(201).json({
+  res.status(200).json({
     cartItems: `${cartItems}`,
   });
 }

@@ -1,9 +1,11 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
+import Item from "../components/Item";
 
 export default function Home() {
   const [selectedItems, setSelectedItems] = useState([]);
+  const [items, setItems] = useState([]);
 
   const isItemSelected = (itemId) => selectedItems.includes(itemId);
   const selectItem = (itemId) => {
@@ -31,9 +33,15 @@ export default function Home() {
     fetch("/api/checkout", requestOptions)
       .then((response) => response.json())
       .then((res) => console.log(res));
-
-    console.log(selectedItems);
   };
+
+  useEffect(() => {
+    fetch("/api/items")
+      .then((response) => response.json())
+      .then((items) => {
+        setItems(items);
+      });
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -47,61 +55,14 @@ export default function Home() {
         <h1 className={styles.title}>E-Shop</h1>
         <h2>Available Items:</h2>
         <form onSubmit={handleSubmit}>
-          <div>
-            <label>
-              <input
-                type="checkbox"
-                name="item1"
-                checked={isItemSelected("item1")}
-                onChange={handleChange("item1")}
-              />
-              Item 1
-            </label>
-          </div>
-          <div>
-            <label>
-              <input
-                type="checkbox"
-                name="item2"
-                checked={isItemSelected("item2")}
-                onChange={handleChange("item2")}
-              />
-              Item 2
-            </label>
-          </div>
-          <div>
-            <label>
-              <input
-                type="checkbox"
-                name="item3"
-                checked={isItemSelected("item3")}
-                onChange={handleChange("item3")}
-              />
-              Item 3
-            </label>
-          </div>
-          <div>
-            <label>
-              <input
-                type="checkbox"
-                name="item4"
-                checked={isItemSelected("item4")}
-                onChange={handleChange("item4")}
-              />
-              Item 4
-            </label>
-          </div>
-          <div>
-            <label>
-              <input
-                type="checkbox"
-                name="item5"
-                checked={isItemSelected("item5")}
-                onChange={handleChange("item5")}
-              />
-              Item 5
-            </label>
-          </div>
+          {items.map((item) => (
+            <Item
+              key={item}
+              name={item}
+              isChecked={isItemSelected(item)}
+              onChange={handleChange(item)}
+            />
+          ))}
           <button type="submit">Checkout</button>
         </form>
       </main>
