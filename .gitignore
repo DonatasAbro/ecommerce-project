@@ -19,6 +19,7 @@
 .DS_Store
 *.pem
 screenshots
+dummy.html
 
 # debug
 npm-debug.log*
