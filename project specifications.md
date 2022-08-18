@@ -20,3 +20,7 @@ v0.2b
 - return from backend pictures url
 - render pictures
 - make it pretty
+
+v0.2c
+
+- checkout returns array of items
