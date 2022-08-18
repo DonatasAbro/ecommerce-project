@@ -6,7 +6,7 @@ function Item({ name, picUrl, value, color, onClick }) {
       <img
         className="card-img-top card-pic align-self-center"
         src={picUrl}
-        alt="item image"
+        alt={`${name} image`}
       />
       <div className="card-body">
         <h5 className="card-title">{name}</h5>

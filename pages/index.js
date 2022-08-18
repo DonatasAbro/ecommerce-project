@@ -7,12 +7,15 @@ export default function Home() {
   const [items, setItems] = useState([]);
 
   const isItemSelected = (itemId) => selectedItems.includes(itemId);
+
   const selectItem = (itemId) => {
     return [...selectedItems, itemId];
   };
+
   const deselectItem = (itemId) => {
     return selectedItems.filter((x) => x !== itemId);
   };
+
   const handleClick = (itemId) => (event) => {
     if (isItemSelected(itemId)) {
       setSelectedItems(deselectItem(itemId));
@@ -21,18 +24,21 @@ export default function Home() {
 
     setSelectedItems(selectItem(itemId));
   };
+
   const itemBtnValue = (itemId) => {
     if (isItemSelected(itemId)) {
       return "➖ Remove from cart";
     }
     return "➕ Add to cart";
   };
+
   const itemBtnColor = (itemId) => {
     if (isItemSelected(itemId)) {
       return "btn btn-danger";
     }
     return "btn btn-success";
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -88,8 +94,8 @@ export default function Home() {
             </button>
           </div>
         </form>
-        <div className="checkout-buffer" />
       </main>
+      <div className="checkout-buffer mt-3" />
     </div>
   );
 }
