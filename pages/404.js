@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function FourOhFour() {
   return (
     <div
@@ -5,13 +7,14 @@ export default function FourOhFour() {
       style={{ height: "100vh" }}
     >
       <h1 className="text-white">404 - Page Not Found</h1>
-      <a
-        href="/"
-        className="text-white p-2 border rounded border-white"
-        style={{ textDecoration: "none" }}
-      >
-        <b>Go back home</b>
-      </a>
+      <Link href="/">
+        <a
+          className="text-white p-2 border rounded border-white"
+          style={{ textDecoration: "none" }}
+        >
+          <b>Go back home</b>
+        </a>
+      </Link>
     </div>
   );
 }
