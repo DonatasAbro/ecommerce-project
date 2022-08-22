@@ -24,3 +24,4 @@ v0.2b
 v0.2c
 
 - checkout returns array of items
+- make an item database (mongoDB?)
