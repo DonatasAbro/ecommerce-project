@@ -25,3 +25,7 @@ v0.2c
 
 - checkout returns array of items
 - make an item database (mongoDB?)
+
+v0.3
+
+- multiple selection of same item
