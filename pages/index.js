@@ -16,6 +16,13 @@ export default function Home() {
     return selectedItems.filter((x) => x !== itemId);
   };
 
+  const removeItem = (itemId) => {
+    let newList = [...selectedItems];
+    const index = newList.findIndex((it) => it === itemId);
+    newList.splice(index, 1);
+    return newList;
+  };
+
   const handleClick = (itemId) => (event) => {
     if (isItemSelected(itemId)) {
       setSelectedItems(deselectItem(itemId));
@@ -25,11 +32,11 @@ export default function Home() {
     setSelectedItems(selectItem(itemId));
   };
 
-  const itemBtnValue = (itemId) => {
+  const itemBtnText = (itemId) => {
     if (isItemSelected(itemId)) {
-      return "➖ Remove from cart";
+      return "Remove all from cart";
     }
-    return "➕ Add to cart";
+    return "Add to cart";
   };
 
   const itemBtnColor = (itemId) => {
@@ -37,6 +44,20 @@ export default function Home() {
       return "btn btn-danger";
     }
     return "btn btn-success";
+  };
+
+  const itemAmount = (itemId) => {
+    return selectedItems.filter((it) => it === itemId).length;
+  };
+
+  const handleSubtract = (itemId) => (event) => {
+    if (isItemSelected(itemId)) {
+      setSelectedItems(removeItem(itemId));
+    }
+  };
+
+  const handleAdd = (itemId) => (event) => {
+    setSelectedItems(selectItem(itemId));
   };
 
   const handleSubmit = (event) => {
@@ -82,9 +103,12 @@ export default function Home() {
                 key={item.itemId}
                 name={item.itemId}
                 picUrl={item.picUrl}
-                value={itemBtnValue(item.itemId)}
+                btnText={itemBtnText(item.itemId)}
                 color={itemBtnColor(item.itemId)}
                 onClick={handleClick(item.itemId)}
+                amount={itemAmount(item.itemId)}
+                onSubtract={handleSubtract(item.itemId)}
+                onAdd={handleAdd(item.itemId)}
               />
             ))}
           </div>
