@@ -18,42 +18,41 @@ const Navbar = () => {
 
         <div className="col-md-3 text-end">
           {!isLoading && !user && (
-            <Link
-              href="/api/auth/login"
-              className="btn btn-warning me-2"
-              role="button"
-            >
-              Login / Sign-up
+            <Link href="/api/auth/login">
+              <button className="btn btn-warning me-2" role="button">
+                Login / Sign-up
+              </button>
             </Link>
           )}
           {user && (
             <div className="dropdown text-end">
-              <Link
-                href="#"
-                className="d-block link-dark text-decoration-none dropdown-toggle"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <img
-                  src={user.picture}
-                  alt="mdo"
-                  width="32"
-                  height="32"
-                  className="rounded-circle"
-                />
+              <Link href="#">
+                <div
+                  className="d-block link-dark text-decoration-none dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <img
+                    src={user.picture}
+                    alt="mdo"
+                    width="40"
+                    height="40"
+                    className="rounded-circle"
+                  />
+                </div>
               </Link>
               <ul className="dropdown-menu text-small">
                 <li>
-                  <Link className="dropdown-item" href="/api/auth/me">
-                    Profile
+                  <Link href="/api/auth/me">
+                    <div className="dropdown-item">Profile</div>
                   </Link>
                 </li>
                 <li>
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <Link className="dropdown-item" href="/api/auth/logout">
-                    Logout
+                  <Link href="/api/auth/logout">
+                    <div className="dropdown-item text-danger">Logout</div>
                   </Link>
                 </li>
               </ul>
