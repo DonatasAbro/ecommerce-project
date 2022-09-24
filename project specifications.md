@@ -29,3 +29,4 @@ v0.2c
 v0.3
 
 - multiple selection of same item
+- user authentification (Auth0 api?)

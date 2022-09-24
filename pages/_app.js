@@ -2,13 +2,18 @@ import "bootstrap/dist/css/bootstrap.css";
 import "../styles/customStyle.css";
 
 import { useEffect } from "react";
+import { UserProvider } from "@auth0/nextjs-auth0";
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
     import("bootstrap/dist/js/bootstrap");
   }, []);
 
-  return <Component {...pageProps} />;
+  return (
+    <UserProvider>
+      <Component {...pageProps} />
+    </UserProvider>
+  );
 }
 
 export default MyApp;

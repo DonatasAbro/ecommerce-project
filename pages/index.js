@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import Item from "../components/Item";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -89,11 +90,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <Navbar />
       <main className="container">
-        <center>
+        {/* <center>
           <h1 className="p-3">E-Shop</h1>
-        </center>
+        </center> */}
 
         <h2>Available Items:</h2>
         <form onSubmit={handleSubmit}>
