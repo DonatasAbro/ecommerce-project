@@ -18,13 +18,13 @@ const Navbar = () => {
 
         <div className="col-md-3 text-end">
           {!isLoading && !user && (
-            <a
+            <Link
               href="/api/auth/login"
               className="btn btn-warning me-2"
               role="button"
             >
               Login / Sign-up
-            </a>
+            </Link>
           )}
           {user && (
             <div className="dropdown text-end">
