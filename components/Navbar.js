@@ -19,7 +19,7 @@ const Navbar = () => {
           {!isLoading && !user && (
             <a
               href="/api/auth/login"
-              class="btn btn-warning me-2"
+              className="btn btn-warning me-2"
               role="button"
             >
               Login / Sign-up
@@ -27,7 +27,7 @@ const Navbar = () => {
           )}
           {user && (
             <div className="dropdown text-end">
-              <a
+              <Link
                 href="#"
                 className="d-block link-dark text-decoration-none dropdown-toggle"
                 data-bs-toggle="dropdown"
@@ -40,20 +40,20 @@ const Navbar = () => {
                   height="32"
                   className="rounded-circle"
                 />
-              </a>
+              </Link>
               <ul className="dropdown-menu text-small">
                 <li>
-                  <a className="dropdown-item" href="/api/auth/me">
+                  <Link className="dropdown-item" href="/api/auth/me">
                     Profile
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/api/auth/logout">
+                  <Link className="dropdown-item" href="/api/auth/logout">
                     Logout
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
