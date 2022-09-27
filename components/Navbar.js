@@ -41,7 +41,7 @@ const Navbar = () => {
                   />
                 </div>
               </Link>
-              <ul className="dropdown-menu text-small">
+              <ul className="dropdown-menu text-small container">
                 <li>
                   <Link href="/api/auth/me">
                     <div className="dropdown-item">Profile</div>

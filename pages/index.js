@@ -92,11 +92,10 @@ export default function Home() {
       </Head>
       <Navbar />
       <main className="container">
-        {/* <center>
-          <h1 className="p-3">E-Shop</h1>
-        </center> */}
+        <center className="py-3 my-3">
+          <h2>Available Items</h2>
+        </center>
 
-        <h2>Available Items:</h2>
         <form onSubmit={handleSubmit}>
           <div className="row flex-wrap justify-content-center gap-3">
             {items.map((item) => (
